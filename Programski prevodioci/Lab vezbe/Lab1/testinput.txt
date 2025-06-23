@@ -1,0 +1,23 @@
+main()
+{
+	%%ovo je komentar%%
+	 integer 2a, d;
+	 integer a, b2, c, _d;
+	 float a1, a2, a_3;
+	 a=0oct64;
+	 a=0oct69;
+	 b2=0hex12A;
+	 c=0dec10;
+	 c=10;
+	 char b;
+	 float _b2;
+	 b='c';
+	 a1=2.0;
+	 a2=2.2E-3;
+	 a_3=0.8E;
+	 case (b) 
+	 {
+	 	when 1: d=3;
+	 	when 2: d=4;
+	 }
+}

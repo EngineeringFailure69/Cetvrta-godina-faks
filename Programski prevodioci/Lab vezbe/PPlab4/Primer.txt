@@ -1,0 +1,10 @@
+main(){
+	int b;
+	int d;
+	b=5; 
+     case (b) 
+	 {
+	 	when 1: d=3;
+	 	when 2: d=4;
+	 }
+}
