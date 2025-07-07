@@ -1,0 +1,59 @@
+//import sekcija
+
+import java_cup.runtime.*;
+import java.io.*;
+
+parser code {:
+   public static void main( String[] args )
+   {
+      try
+	  {
+		   FileReader file = new FileReader( args[0] );
+		   Scanner scanner = new MPLexer( file );
+		   MPParser parser = new MPParser( scanner );
+		   parser.parse();
+	  }
+	  catch( Exception e )
+	  {
+		   e.printStackTrace();
+	  }
+   }
+:};
+
+//Terminali
+terminal ID, CONST, LEFTSQUAREBRACKET, RIGHTSQUAREBRACKET, ASSIGN, COMMA;
+
+//Neterminali
+non terminal ArgumentList, Argument, Type;
+
+//Gramatika
+
+ArgumentList ::= Argument
+			     {:
+                  	System.out.println( "Redukcija 1: ArgumentList ::= Argument" );
+        		 :}
+			   | ArgumentList COMMA Argument
+			   	 {:
+                  	System.out.println( "Redukcija 2: ArgumentList ::= ArgumentList, Argument" );
+        		 :}
+        	   ;
+        	
+Argument ::= Type ID
+			 {:
+              	System.out.println( "Redukcija 3: Argument ::= Type ID" );
+    		 :}
+    	   | Type ID ASSIGN CONST
+    	     {:
+              	System.out.println( "Redukcija 4: Argument ::= Type ID = CONST" );
+    		 :}
+    	   ;
+    	   
+Type ::= Type LEFTSQUAREBRACKET RIGHTSQUAREBRACKET
+         {:
+          	System.out.println( "Redukcija 5: Type ::= Type []" );
+		 :} 
+	   | ID
+	   	 {:
+          	System.out.println( "Redukcija 6: Type ::= ID" );
+		 :}
+	   ;

@@ -1,0 +1,39 @@
+IMC<uslov>
+Load_Mem R1, RESULT<uslov>
+// Sve dok se ne izvrsi IMC za neki od izraza iz liste, sadrzaj registra R1 ostaje
+// sigurno nepromenjen i sadrzi vrednost izraza uslov
+
+// U R2 upisujemo redni broj tekućeg izraza (pretpostavimo da redni brojevi izraza počinju od 1)
+Load_Const R2, 1
+Compare_Equal R1, R2
+// Ako su redni broj tekuceg izraza i vrednost izraza uslov razliciti skace se na razmatranje
+// sledeceg izraza
+JumpIfZero R2, kraj1
+IMC<izraz1>
+Load_Mem R3, RESULT<izraz1>
+Jump krajSelect
+
+kraj1:
+// Ista logika se ponavlja za drugi izraz
+Load_Const R2, 2
+Compare_Equal R1, R2
+JumpIfZero R2, kraj2
+IMC<izraz2>
+Load_Mem R3, RESULT<izraz2>
+Jump krajSelect
+
+kraj2:
+   .
+   .
+   .
+
+// Ista logika se ponavlja za sve izraze zakljucno sa poslednjim N-tim
+Load_Const R2, N 
+Compare_Equal R2, R1
+JumpIfZero R2, krajSelect
+IMC<izrazN>
+Load_Mem R3, RESULT<izrazN>
+
+krajSelect:
+// U R3 je svakako rezultat koji treba da se smesti u promenljivu rezulztat za objekat this.
+Store R3, RESULT<SelectExpression>

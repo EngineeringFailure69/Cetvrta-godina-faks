@@ -1,0 +1,317 @@
+//import sekcija
+import java_cup.runtime.*;
+import java.io.*;
+import java.util.*;
+import SymbolTable.*;
+
+parser code {:
+	public int errNo = 0;
+	public int warnNo = 0;
+	SymbolTable symbolTable; 
+
+   public static void main( String[] args )
+   {
+      try
+	  {
+		   FileReader file = new FileReader( args[0] );
+		   java_cup.runtime.Scanner scanner = new MPLexer( file );
+		   MPParser parser = new MPParser( scanner );
+		   parser.parse();
+		   parser.checkWarnings();
+		   if ( parser.errNo==0 && parser.warnNo==0 )
+		   		System.out.println("Analiza zavrsena. U kodu nema gresaka." );
+ 		   else
+ 				System.out.println("Analiza zavrsena. Broj gresaka: " + parser.errNo + " Broj upozorenja: " + parser.warnNo ); 
+	  }
+	  catch( Exception e )
+	  {
+		   e.printStackTrace();
+	  }
+   }
+   public void checkWarnings()
+   {
+   		SymbolNode current = symbolTable.getVariables();
+ 		while ( current != null )
+ 		{
+ 			Variable var = ( Variable ) current;
+ 			if ( var.last_def == -1 && var.last_use == -1 )
+ 			{
+ 				System.out.println("Upozorenje: Promenljiva " + var.name + "je deklarisana, ali se ne koristi."); 
+				warnNo++;
+			}
+ 			else if ( var.last_def > var.last_use )
+ 			{
+ 				System.out.println("Upozorenje: Vrednost dodeljena prom. " + var.name + " u liniji " + var.last_def + " se nigde ne koristi." );
+				warnNo++;
+ 			}
+ 		current = current.next;
+ 		}
+ 	}
+	public void syntax_error(Symbol cur_token)
+ 	{
+
+ 	}
+
+ 	public int getLine()
+ 	{
+ 		return (( MPLexer) getScanner()).getLine();
+ 	}
+:};
+
+init with {:
+	symbolTable = new SymbolTable();
+:}
+
+//Terminali
+terminal MAIN, INT, CHAR, FLOAT, CASE, WHEN; // EPSILON,
+terminal PLUS, MINUS, LEFTPAR, RIGHTPAR, LEFTCURLY, RIGHTCURLY, COLON, ASSIGN, SEMICOLON, COMMA;
+terminal String ID;
+terminal Integer CONSTINTEGER;
+terminal Character CONSTCHAR;
+terminal Float CONSTFLOAT;
+
+//Neterminali
+non terminal Program, Block, Declarations, VarDecl, StatementList, CaseStatement;
+non terminal WhenStatementList, WhenStatement, AddOperator;
+non terminal Constant Konstanta;
+non terminal ArrayList NameList;
+non terminal Type Expression, Statement, _Type, Term;
+
+
+//Gramatika
+start with Program;
+
+Program ::= MAIN LEFTPAR RIGHTPAR Block
+            {:
+
+            :};
+
+Block ::= LEFTCURLY Declarations StatementList RIGHTCURLY
+             {:
+                
+             :};
+
+Declarations ::= Declarations VarDecl 
+            {:
+
+            :}
+          | 
+          ;
+
+//Jedno ime u jednoj oblasti vazenja može biti definisano najvise jednom
+VarDecl ::= _Type:t NameList:niz SEMICOLON
+                {:
+					for (int i = 0; i < niz.size(); i++)
+						{
+							String ime = (String) niz.get(i);
+							if (!parser.symbolTable.addVar(ime, t))
+							{
+								System.out.println("Greska u liniji: " + parser.getLine() + ", Promenljiva: " + ime + " je vec deklarisana!");
+								parser.errNo++;
+							}
+						}
+                :};
+
+NameList ::= ID:ime
+             {:
+				RESULT = new ArrayList();
+				RESULT.add(ime);
+             :} 
+           | NameList:niz COMMA ID:ime
+             {:
+				RESULT = niz;
+				RESULT.add(ime);
+             :}
+           ;
+
+_Type ::= INT
+        {:
+           RESULT = parser.symbolTable.getType( "int" );
+        :}
+      | CHAR
+        {:
+           RESULT = parser.symbolTable.getType( "char" );
+        :}
+      | FLOAT
+        {:
+           RESULT = parser.symbolTable.getType( "float" );
+        :}
+      ;
+
+StatementList ::= StatementList Statement 
+         {:
+
+         :}
+       | Statement
+       	 {:
+
+         :}
+         ;
+
+//Kod dodele vrednosti promenljivoj numerickog tipa (char, int ili float) moze se
+vrsiti implicitna konverzija iz nizeg u visi tip.
+Statement ::= CaseStatement
+           {:
+
+           :}
+         | ID:ime ASSIGN Expression:t SEMICOLON
+           {:
+				 Variable var = parser.symbolTable.getVar(ime);
+				 if (var != null && var.type == parser.symbolTable.getType("float") && t.tkind == Type.INT)
+				 {
+		   				 // Implicitna konverzija int -> float
+		  				  t.tkind = Type.FLOAT;	  
+				 }
+				else if (var != null && var.type.tkind != t.tkind)
+			    {
+		    		System.out.println("Greska u liniji: " + parser.getLine() + ", Nekompatibilni tipovi dodeljeni promenljivoj " + ime + "!");
+		    		parser.errNo++;
+				}
+				else if (var == null)
+				{
+					System.out.println("Greska u liniji: " + parser.getLine() + ", Promenljiva: " + ime + " nije deklarisana!");
+					parser.errNo++;	
+				}
+		
+				else 
+				{
+					var.last_def = parser.getLine();
+				}
+           :}
+         | Block
+           {:
+ 
+           :}
+         ;
+
+//Izraz u case naredbi moze biti tipa int ili tipa char. 
+CaseStatement ::= CASE LEFTPAR Expression:e RIGHTPAR LEFTCURLY WhenStatementList:w RIGHTCURLY
+            {:
+ 				if(e.tkind != Type.INT && e.tkind != Type.CHAR)
+ 				{
+ 					System.out.println("Greska u liniji: " + parser.getLine() + "Izraz u case nije int ili char");
+					parser.errNo++;
+ 				}
+ 				if(e.tkind != s.tkind)
+ 				{
+ 					System.out.println("Greska u liniji: " + parser.getLine() + "Konstanta u when nije istog tipa kao izraz u case");
+					parser.errNo++;
+ 				}
+            :};
+
+WhenStatementList ::= WhenStatementList:w WhenStatement:s
+         {:
+                RESULT = new ArrayList();
+                for (int i = 0; i < w.size(); i++)
+				{
+							String whenstat = (String) w.get(i);
+							RESULT.add(whenstat);
+				}
+         :}
+        | WhenStatement:s
+           {:
+           	  	RESULT = s;
+           :}
+         ;
+
+WhenStatement ::= WHEN Konstanta:k COLON Statement:s
+          {:
+				RESULT = new ArrayList();
+				RESULT.add(k);
+          :};
+
+//Aritmeticki operatori se mogu primeniti nad operandima numerickog tipa (char,
+int ili float) pri cemu je dozvoljena implicitna konverzija nizeg u visi tip tako da je
+rezultat uvek viseg tipa.
+Expression ::= Expression:left AddOperator Term:right 
+           {:
+				if(left.tkind != Type.FLOAT && right.tkind != Type.INT)
+				{
+					right.tkind = Type.FLOAT; //Konvertujem ga eksplicitno 
+					RESULT = parser.symbolTable.getType("float");
+				}
+				else if(left.tkind == Type.INT && right.tkind == Type.INT)
+				{
+					RESULT = parser.symbolTable.getType("int");
+				}
+				else if(left.tkind == Type.FLOAT && right.tkind == Type.FLOAT)
+				{
+					RESULT = parser.symbolTable.getType("float");
+				}
+				else
+				{
+					System.out.println("Greska u liniji: " + parser.getLine() + ", Relacioni operatori se mogu primeniti samo nad operandima numerickog tipa!");
+					parser.errNo++;
+				}
+           :}
+          | Term:t
+           {:
+				if(t.tkind == Type.INT)
+				{
+					RESULT = parser.symbolTable.getType("int");
+				}
+				else if(t.tkind == Type.CHAR)
+				{
+					RESULT = parser.symbolTable.getType("char");
+				}
+				else
+				{
+					System.out.println("Greska u liniji: " + parser.getLine() + ", Term mora biti tipa int ili char!");
+					parser.errNo++;
+				}
+           :}
+         ;
+
+AddOperator ::= PLUS  
+          {:
+			 
+          :}
+        | MINUS
+          {:
+
+          :}
+        ;
+
+//Ne moze se koristiti promenljiva koja nije deklarisana/inicijalizovana
+Term ::= ID:ime
+           {:
+			Variable var = parser.symbolTable.getVar(ime);
+			if (var == null)
+			{
+				System.out.println("Greska u liniji: " + parser.getLine() + ", Promenljiva: " + ime + " nije deklarisana!");
+				parser.errNo++;	
+				RESULT = parser.symbolTable.getType("unknown" );
+			}
+			else
+			{
+				RESULT = var.type;
+				if (var.last_def == -1)
+				{
+					System.out.println("Greska u liniji: " + parser.getLine() + ", Promenljiva: " + ime + " nije inicijalizovana!");
+					parser.errNo++;	
+				}
+			}
+           :}
+         | Konstanta:k
+           {:
+				RESULT = k.type;
+           :}
+         | LEFTPAR Expression:e RIGHTPAR
+           {:
+				RESULT = e;
+           :}
+         ;
+         
+Konstanta ::= CONSTINTEGER:c
+              {:
+                 RESULT = new Constant( parser.symbolTable.getType( "int" ), c );
+              :}
+            | CONSTCHAR:c
+              {:
+                 RESULT = new Constant( parser.symbolTable.getType( "char" ), c );
+              :}
+            | CONSTFLOAT:c
+              {:
+                 RESULT = new Constant( parser.symbolTable.getType( "float" ), c );
+              :}
+            ;

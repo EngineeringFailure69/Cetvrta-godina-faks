@@ -1,0 +1,132 @@
+//import sekcija
+
+import java_cup.runtime.*;
+import java.io.*;
+
+parser code {:
+
+   public int errNo = 0;
+   
+   public static void main( String[] args )
+   {
+      try
+	  {
+		   FileReader file = new FileReader( args[0] );
+		   Scanner scanner = new MPLexer( file );
+		   MPParser parser = new MPParser( scanner );
+		   parser.parse();
+		   if ( parser.errNo == 0 )
+		      System.out.println( "Analiza zavrsena. U kodu nema gresaka." );
+		   else
+		      System.out.println( "Analiza zavrsena. Broj gresaka: " + parser.errNo );
+	  }
+	  catch( Exception e )
+	  {
+		   e.printStackTrace();
+	  }
+   }
+   
+   public void syntax_error(Symbol cur_token)
+   {
+   	  
+   }
+   
+   public void report_error(String message, Object info)
+   {
+   	   System.out.print( message );
+   }
+   
+   public int getLine()
+   {
+   	  return (( MPLexer) getScanner()).getLine();
+   }
+:};
+
+
+//Terminali
+terminal ID, CONST, LEFTPAR, RIGHTPAR, LESSTHAN, GREATERTHAN, GREATEREQUAL, COLON;
+
+//Neterminali
+non terminal Filter, Condition, RelOp;
+
+//Gramatika
+
+Filter ::= Filter GREATEREQUAL LEFTPAR ID COLON Condition RIGHTPAR 
+		   {:
+               System.out.println("Smena: Filter ::= Filter => (ID : Condition)");
+           :}
+		 | Filter GREATEREQUAL LEFTPAR ID COLON Condition error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: ')' " + 
+            		"na kraju linije");
+            	parser.errNo++;
+           :} 
+         | Filter GREATEREQUAL LEFTPAR ID COLON error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje uslov ");
+            	parser.errNo++;
+           :} 
+         | Filter GREATEREQUAL LEFTPAR ID error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: ':' " + 
+            		"nakon identifikatora");
+            	parser.errNo++;
+           :} 
+         | Filter GREATEREQUAL LEFTPAR error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: identifikator ");
+            	parser.errNo++;
+           :} 
+         | Filter GREATEREQUAL error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: '(' ");
+            	parser.errNo++;
+           :}
+         | Filter error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: operator '=>' ");
+            	parser.errNo++;
+           :}
+         | error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: 'filter' ");
+            	parser.errNo++;
+           :}
+         ;
+         	
+Filter ::= Filter GREATEREQUAL ID
+		   {:
+               System.out.println("Smena: Filter ::= Filter => ID");
+           :}
+         ;
+           
+Condition ::= ID RelOp ID
+		   {:
+               System.out.println("Smena: Condition ::= ID RelOp ID");
+           :}
+			| ID RelOp error
+			  {:
+	               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: identifikator ");
+	            	parser.errNo++;
+              :}
+            | ID error
+	          {:
+	               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: relacioni operator ");
+	            	parser.errNo++;
+	          :}
+	   	    ;
+	   	    
+Condition ::= ID RelOp CONST
+		   {:
+               System.out.println("Smena: Condition ::= ID RelOp CONST");
+           :}
+	        ; 
+RelOp ::= LESSTHAN 
+	    {:
+        	System.out.println("Smena: RelOP ::= <");
+        :}
+        | GREATERTHAN
+        {:
+        	System.out.println("Smena: RelOP ::= >");
+        :}
+		;

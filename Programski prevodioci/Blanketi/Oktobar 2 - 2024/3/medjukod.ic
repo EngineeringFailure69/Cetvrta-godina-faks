@@ -1,0 +1,22 @@
+SelectStatement: 
+
+IMC<selectAlternatives>
+
+AlternativeList:
+
+IMC<alternatives1>
+IMC<alternatives2>
+        .
+        .
+        .
+IMC<alternativesn>
+lblkraj:
+
+Alternative:
+
+IMC<exp>
+Load_Mem R1, RESULT<exp>
+JmpIfZero R1, lbldalje //Ukoliko nije ispunjen nijedan uslov, izvrsenje se nastavlja od prve naredbe nakon ove strukrure, sto je posle lbldalje
+IMC<stat>
+Jmp lblkraj
+lbldalje: 
