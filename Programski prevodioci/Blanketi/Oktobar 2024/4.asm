@@ -1,24 +1,24 @@
-polja u strukturi kojima se pristupa:
+;polja u strukturi kojima se pristupa:
 
-id -> +0
-price -> +4
-next -> +8
-----------------------------------------------------------------
-F-ja add_product:
-----------------------------------------------------------------
-Aktivacioni slog za f-ju add_product:
+; id -> +0
+; price -> +4
+; next -> +8
+; ----------------------------------------------------------------
+; F-ja add_product:
+; ----------------------------------------------------------------
+; Aktivacioni slog za f-ju add_product:
 
-max_product_weight
-max_basket_price
-current_price
-p
-adresa povratka
-vrednost EBP i pozivajucoj f-ji (staro EBP) <- EBP
-num_of_products
-weight
-new_basket_price
--------------------------------------------------------------------
-kod:
+; max_product_weight
+; max_basket_price
+; current_price
+; p
+; adresa povratka
+; vrednost EBP i pozivajucoj f-ji (staro EBP) <- EBP
+; num_of_products
+; weight
+; new_basket_price
+; -------------------------------------------------------------------
+; kod:
 
 PUSH EBP
 MOV EBP, ESP
@@ -63,7 +63,7 @@ ADD ESP, 16 ; skidanje argumenata sa steka
 ADD [EBP - 4], ECX ; dodajem rezultat f-je na num_of_products
 
 kraj: ; svakako se izvrsava
-MOV ECX, [EBP -4] ; vracam rezultat kroz ECX
+MOV ECX, [EBP - 4] ; vracam rezultat kroz ECX
 
 MOV ESP, EBP
 POP EBP

@@ -1,0 +1,65 @@
+//import sekcija
+
+import java_cup.runtime.*;
+import java.io.*;
+
+parser code {:
+   public static void main( String[] args )
+   {
+      try
+	  {
+		   FileReader file = new FileReader( args[0] );
+		   Scanner scanner = new MPLexer( file );
+		   MPParser parser = new MPParser( scanner );
+		   parser.parse();
+	  }
+	  catch( Exception e )
+	  {
+		   e.printStackTrace();
+	  }
+   }
+:};
+
+//Terminali
+terminal ID, CONST, LESSTHAN, GREATERTHAN, ASSIGN, COMMA;
+
+//Neterminali
+non terminal TypeList, Declaration, Type, Var;
+
+//Gramatika
+
+Declaration ::= Type Var
+			     {:
+                  	System.out.println( "Redukcija 1: Declaration -> Type Var" );
+        		 :}
+        	   ;
+        	
+Type ::= ID
+		 {:
+          	System.out.println( "Redukcija 3: Type -> ID" );
+		 :}
+	   | ID LESSTHAN TypeList GREATERTHAN
+	     {:
+          	System.out.println( "Redukcija 4: Type -> ID < TypeList >" );
+		 :}
+	   ;
+    	   
+TypeList ::= Type
+         {:
+          	System.out.println( "Redukcija 5: TypeList -> Type" );
+		 :} 
+	   | TypeList COMMA Type
+	   	 {:
+          	System.out.println( "Redukcija 6: TypeList -> TypeList, Type" );
+		 :}
+	   ;
+	   
+Var ::= ID
+         {:
+          	System.out.println( "Redukcija 7: Var -> ID" );
+		 :} 
+	   | ID ASSIGN CONST
+	   	 {:
+          	System.out.println( "Redukcija 8: Var -> ID = CONST" );
+		 :}
+	   ; 

@@ -55,7 +55,7 @@ MUL EDX  ; mnozim EAX i EDX, i smestam rezultat u EAX
 MOV [EBP - 4], EAX
 
 ;sekvenca povratka iz f-je:
-lab2: MOV EAX, [EBX - 4] ; uzimam vrednost res promenljive i stavljam u EAX 
+lab2: MOV EAX, [EBP - 4] ; uzimam vrednost res promenljive i stavljam u EAX 
 MOV [EBX + 12], EAX ; stavljam vrednost iz EAX na vrh steka, jer tako funkcija vraca rezultat
 
 MOV ESP, EBP
