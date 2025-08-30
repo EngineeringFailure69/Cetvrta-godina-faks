@@ -1,0 +1,145 @@
+//import sekcija
+
+import java_cup.runtime.*;
+import java.io.*;
+
+parser code {:
+
+   public int errNo = 0;
+   
+   public static void main( String[] args )
+   {
+      try
+	  {
+		   FileReader file = new FileReader( args[0] );
+		   Scanner scanner = new MPLexer( file );
+		   MPParser parser = new MPParser( scanner );
+		   parser.parse();
+		   if ( parser.errNo == 0 )
+		      System.out.println( "Analiza zavrsena. U kodu nema gresaka." );
+		   else
+		      System.out.println( "Analiza zavrsena. Broj gresaka: " + parser.errNo );
+	  }
+	  catch( Exception e )
+	  {
+		   e.printStackTrace();
+	  }
+   }
+   
+   public void syntax_error(Symbol cur_token)
+   {
+   	  
+   }
+   
+   public void report_error(String message, Object info)
+   {
+   	   System.out.print( message );
+   }
+   
+   public int getLine()
+   {
+   	  return (( MPLexer) getScanner()).getLine();
+   }
+:};
+
+
+//Terminali
+terminal NEW, TYPE, LEFTSQUARE, RIGHTSQUARE, COMMA, LEFTCURLY, RIGHTCURLY, CONST;
+
+//Neterminali
+non terminal ArrayCreation, InitializerList, Initializer;
+
+//Gramatika
+
+ArrayCreation ::= NEW TYPE LEFTSQUARE CONST RIGHTSQUARE
+		   {:
+               System.out.println("Smena: ArrayCreation -> NEW TYPE [ CONST ]");
+           :}
+		 | NEW TYPE LEFTSQUARE CONST error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: ']' " + 
+            		"na kraju linije");
+            	parser.errNo++;
+           :} 
+         | NEW TYPE error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje '[' u izrazu" + 
+                	"pre CONST");
+            	parser.errNo++;
+           :} 
+         | NEW error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: TYPE ");
+            	parser.errNo++;
+           :} 
+         //| NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY InitializerList RIGHTCURLY
+          // {:
+           //    System.out.println("Smena: ArrayCreation -> NEW TYPE [] {InitializerList}");
+           //:}
+         //| NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY InitializerList error
+	      // {:
+	       //    System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: '}' " + 
+	       // 		"na kraju linije");
+	       // 	parser.errNo++;
+           //:} 
+         //| NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY error
+		 //  {:
+          //     System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje 'InitializerList' u izrazu" + 
+           //     	"izmedju {}");
+            //	parser.errNo++;
+           //:} 
+         //| NEW TYPE LEFTSQUARE RIGHTSQUARE error
+		  // {:
+           //    System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: '{' ");
+            //	parser.errNo++;
+           //:} 
+         ;
+         	
+ArrayCreation ::= NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY InitializerList RIGHTCURLY
+		   {:
+               System.out.println("Smena: ArrayCreation -> NEW TYPE [] {InitializerList}");
+           :}
+           | NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY InitializerList error
+		   {:
+              System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: '}' " + 
+            		"na kraju linije");
+            	parser.errNo++;
+           :} 
+         | NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje 'InitializerList' u izrazu" + 
+                	"izmedju {}");
+            	parser.errNo++;
+           :} 
+         | NEW TYPE LEFTSQUARE RIGHTSQUARE error
+		   {:
+               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: '{' ");
+            	parser.errNo++;
+           :} 
+         ;
+           
+InitializerList ::= InitializerList COMMA Initializer
+		   {:
+               System.out.println("Smena: InitializerList -> InitializerList, Initializer");
+           :}
+			| InitializerList COMMA error
+			  {:
+	               System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: Initializer na kraju linije ");
+	            	parser.errNo++;
+              :}
+	   	    ;
+	   	    
+InitializerList ::= Initializer
+		   {:
+               System.out.println("Smena: InitializerList -> Initializer");
+           :}
+	       ; 
+Initializer ::= CONST 
+	    {:
+        	System.out.println("Smena: Initializer -> CONST ");
+        :}
+        | ArrayCreation
+        {:
+        	System.out.println("Smena: Initializer -> ArrayCreation");
+        :}
+		;

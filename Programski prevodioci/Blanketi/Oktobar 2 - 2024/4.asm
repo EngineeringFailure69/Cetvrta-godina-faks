@@ -41,8 +41,6 @@ lab1: MOV EBX, [EBP + 8] ; ako prvi if nije ispunjen, skace se na ovaj if(t->nex
 MOV EAX, [EBX + 8] ; ovo je t->next 
 CMP EAX, 0
 JE lab2
-MOV EBX, [EBP + 8] ; potencijalni visak opet, jer EBX jos uvek nosi pokazivac t
-MOV EAX, [EBX + 8] ; opet moze i bez ovoga, jer EAX jos uvek nosi ispravnu vrednost t->next
 ;rekurzivan poziv
 PUSH EAX ; pravimo mesto na  steku za rezultat
 MOV EDX, [EBX + 8] ; ovo je parametar f-je

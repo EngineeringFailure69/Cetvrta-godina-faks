@@ -36,9 +36,13 @@ MOV EAX, [EBP + 12] ; pomeram current_price u EAX
 MOV EDX, [EBX + 4] ; p pokazivac je jos uvek u EBX, i uzimam p->price
 ADD EAX, EDX ; sabiram i smestam rezultat u EAX
 MOV [EBP - 12], EAX  ; smestam rezultat u new_basket_price
-CMP [EBP - 8], [EBP + 20] ; weight < max_product_weight if uslov
+MOV EAX, [EBP-8]
+MOV EDX, [EBP+20]
+CMP EAX, EDX ; weight < max_product_weight if uslov
 JAE lab1 ; ukoliko nije ispunjen uslov
-CMP [EBP - 12], [EBP + 16] ; new_basket_price < max_basket_price
+MOV EAX, [EBP - 12]
+MOV EDX, [EBP + 16]
+CMP EAX, EDX ; new_basket_price < max_basket_price
 JAE lab1 ; nije ispunjen uslov
 ; uslov ispunjen 
 MOV EAX, 1
@@ -48,15 +52,15 @@ MOV [EBP + 12], EAX ; smestam u current_price
 
 lab1: MOV EAX, [EBX + 8] ; uzimam p->next
 CMP EAX, 0 ; p->next != 0
-JNE kraj
+JE kraj
 ; ispunjen uslov i sada ide rekurzija
-MOV EAX, [EBP + 20] ; prvi argument
+MOV EAX, [EBP + 20] ; cetvrti argument
 PUSH EAX
-MOV EAX, [EBP + 16] ; drugi argument
+MOV EAX, [EBP + 16] ; treci argument
 PUSH EAX
-MOV EAX, [EBP + 12] ; treci argument
+MOV EAX, [EBP + 12] ; drugi argument
 PUSH EAX
-MOV EAX, [EBX + 8] ; cetvrti argument f-je
+MOV EAX, [EBX + 8] ; prvi argument f-je
 PUSH EAX
 CALL add_product
 ADD ESP, 16 ; skidanje argumenata sa steka
