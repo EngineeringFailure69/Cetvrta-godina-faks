@@ -72,27 +72,6 @@ ArrayCreation ::= NEW TYPE LEFTSQUARE CONST RIGHTSQUARE
                System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: TYPE ");
             	parser.errNo++;
            :} 
-         //| NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY InitializerList RIGHTCURLY
-          // {:
-           //    System.out.println("Smena: ArrayCreation -> NEW TYPE [] {InitializerList}");
-           //:}
-         //| NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY InitializerList error
-	      // {:
-	       //    System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: '}' " + 
-	       // 		"na kraju linije");
-	       // 	parser.errNo++;
-           //:} 
-         //| NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY error
-		 //  {:
-          //     System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje 'InitializerList' u izrazu" + 
-           //     	"izmedju {}");
-            //	parser.errNo++;
-           //:} 
-         //| NEW TYPE LEFTSQUARE RIGHTSQUARE error
-		  // {:
-           //    System.out.println("Greska u liniji " + parser.getLine() + " Nedostaje: '{' ");
-            //	parser.errNo++;
-           //:} 
          ;
          	
 ArrayCreation ::= NEW TYPE LEFTSQUARE RIGHTSQUARE LEFTCURLY InitializerList RIGHTCURLY

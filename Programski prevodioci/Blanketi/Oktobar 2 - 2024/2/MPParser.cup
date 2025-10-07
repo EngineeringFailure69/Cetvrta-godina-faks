@@ -94,9 +94,9 @@ Filter ::= Filter GREATEREQUAL LEFTPAR ID COLON Condition RIGHTPAR
            :}
          ;
          	
-Filter ::= Filter GREATEREQUAL ID
+Filter ::= ID
 		   {:
-               System.out.println("Smena: Filter ::= Filter => ID");
+               System.out.println("Smena: Filter ::= ID");
            :}
          ;
            
