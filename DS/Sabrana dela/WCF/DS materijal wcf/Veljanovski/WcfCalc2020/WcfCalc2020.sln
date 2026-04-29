@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfCalc2020", "WcfCalc2020\WcfCalc2020.csproj", "{29D19477-4B02-48BB-BAF1-18AADCC7B136}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWcfClientCalc", "AppWcfClientCalc\AppWcfClientCalc.csproj", "{933286F0-BD98-4AAC-8218-638AABF3DA14}"
+	ProjectSection(ProjectDependencies) = postProject
+		{29D19477-4B02-48BB-BAF1-18AADCC7B136} = {29D19477-4B02-48BB-BAF1-18AADCC7B136}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29D19477-4B02-48BB-BAF1-18AADCC7B136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D19477-4B02-48BB-BAF1-18AADCC7B136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D19477-4B02-48BB-BAF1-18AADCC7B136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D19477-4B02-48BB-BAF1-18AADCC7B136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{933286F0-BD98-4AAC-8218-638AABF3DA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{933286F0-BD98-4AAC-8218-638AABF3DA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{933286F0-BD98-4AAC-8218-638AABF3DA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{933286F0-BD98-4AAC-8218-638AABF3DA14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25E7C93F-72B9-4DC1-8751-3B614DD7BD6E}
+	EndGlobalSection
+EndGlobal

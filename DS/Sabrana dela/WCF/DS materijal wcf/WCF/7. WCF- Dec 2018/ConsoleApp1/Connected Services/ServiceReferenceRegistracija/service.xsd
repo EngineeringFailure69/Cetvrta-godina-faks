@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/_7.WCF__Dec_2018" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="dodajRegistraciju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/_7.WCF__Dec_2018" minOccurs="0" name="vlasnik" nillable="true" type="q1:Vlasnik" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/_7.WCF__Dec_2018" minOccurs="0" name="vozilo" nillable="true" type="q2:Vozilo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dodajRegistracijuResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vratiVozilaVlasnika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/_7.WCF__Dec_2018" minOccurs="0" name="v" nillable="true" type="q3:Vlasnik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vratiVozilaVlasnikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/_7.WCF__Dec_2018" minOccurs="0" name="vratiVozilaVlasnikaResult" nillable="true" type="q4:ArrayOfVozilo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="posedujeVozilo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="model" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="posedujeVoziloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/_7.WCF__Dec_2018" minOccurs="0" name="posedujeVoziloResult" nillable="true" type="q5:ArrayOfVlasnik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vratiRegistracije">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vratiRegistracijeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="vratiRegistracijeResult" nillable="true" type="q6:ArrayOfKeyValueOfVlasnikArrayOfVoziloLsn7Q_SwL" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

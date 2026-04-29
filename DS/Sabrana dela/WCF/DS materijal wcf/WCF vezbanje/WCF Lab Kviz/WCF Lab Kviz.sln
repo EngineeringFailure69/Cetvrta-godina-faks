@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF Lab Kviz", "WCF Lab Kviz\WCF Lab Kviz.csproj", "{88F25E45-E593-418D-BF4C-9413BF74C5A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF Korisnik", "WCF Korisnik\WCF Korisnik.csproj", "{78BE2208-5839-4BA2-ADEC-9B61CADEE85C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{88F25E45-E593-418D-BF4C-9413BF74C5A9} = {88F25E45-E593-418D-BF4C-9413BF74C5A9}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88F25E45-E593-418D-BF4C-9413BF74C5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F25E45-E593-418D-BF4C-9413BF74C5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F25E45-E593-418D-BF4C-9413BF74C5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F25E45-E593-418D-BF4C-9413BF74C5A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78BE2208-5839-4BA2-ADEC-9B61CADEE85C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78BE2208-5839-4BA2-ADEC-9B61CADEE85C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78BE2208-5839-4BA2-ADEC-9B61CADEE85C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78BE2208-5839-4BA2-ADEC-9B61CADEE85C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2C2C674-8B3F-441B-9774-D4B033859D64}
+	EndGlobalSection
+EndGlobal

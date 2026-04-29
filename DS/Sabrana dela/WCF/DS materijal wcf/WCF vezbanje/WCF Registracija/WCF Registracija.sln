@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF Registracija", "WCF Registracija\WCF Registracija.csproj", "{238367C6-44F1-4BEB-BD7A-B1E14311CF3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistracijaKorisnik", "RegistracijaKorisnik\RegistracijaKorisnik.csproj", "{4BA613BB-8236-4E44-A762-A53EE6571D85}"
+	ProjectSection(ProjectDependencies) = postProject
+		{238367C6-44F1-4BEB-BD7A-B1E14311CF3B} = {238367C6-44F1-4BEB-BD7A-B1E14311CF3B}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{238367C6-44F1-4BEB-BD7A-B1E14311CF3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238367C6-44F1-4BEB-BD7A-B1E14311CF3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238367C6-44F1-4BEB-BD7A-B1E14311CF3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238367C6-44F1-4BEB-BD7A-B1E14311CF3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BA613BB-8236-4E44-A762-A53EE6571D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BA613BB-8236-4E44-A762-A53EE6571D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BA613BB-8236-4E44-A762-A53EE6571D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BA613BB-8236-4E44-A762-A53EE6571D85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EA53CBC-83EA-4D1D-AA97-5CDAC696B12A}
+	EndGlobalSection
+EndGlobal

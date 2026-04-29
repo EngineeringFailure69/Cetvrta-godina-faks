@@ -1,0 +1,11 @@
+
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+
+
+public interface CarManager extends Remote {
+         boolean requestCar(String address) throws RemoteException;   
+         Car addCar(CarCallback clb) throws RemoteException;       
+}

@@ -1,0 +1,179 @@
+Potreban je ServiceInterface koji implementira klasa Service.
+Klasa Service u metodama zove Repositroy.Instance.imeMetode(parametri).
+Repositroy je klasa koja sadrzi funkcije i obicno sadrzi listu necega.
+Pored ovih klasa imamo i dodane klase sa kojima se radi(DataContract klase).
+
+Sa druge strane, imamo program(konzolnu aplikaciju) u koju kreiramo proxy,
+tako da mozemo da pristupimo udaljenim metodama Servisa.
+
+--Example--
+
+-----------------------------------------------------------------
+IService1.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace WcfServiceLibrary2
+{
+    [ServiceContract]      	//bitna linija
+    public interface IService1
+    {
+        [OperationContract]	//bitna linija
+        void registrujUsera(string ime); 
+    }
+}
+
+-----------------------------------------------------------------
+Service.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+namespace WcfServiceLibrary2
+{
+    public class Service1 : IService1
+    {
+        void IService1.registrujUsera(string ime)
+        {
+	    User u=new User(ime);
+            Repository.Instance.registruj(u);
+        }
+    }
+}
+
+-----------------------------------------------------------------
+
+Repository.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WcfServiceLibrary2
+{
+    public class Repository
+    {
+        private static Repository instance = null;	//bitna linija
+        private static object locker = true;  		//bitna linija
+        public List<User> users= new List<User>();	//lista user-a
+
+        public Repository() { }
+
+        public void registruj(User u)
+        {
+            this.user.Add(u);
+        }
+
+        public static Repository Instance		//bitno
+        {
+            get
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                        instance = new Repository();
+                    return instance;
+                }
+            }
+        }
+    }
+}
+
+
+
+-----------------------------------------------------------------
+
+User.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WcfServiceLibrary2
+{   
+    [DataContract]			//bitna linija
+    public class User
+    {
+        [DataMember]			//bitna linija
+        public string ime;
+
+        public User(string ime)
+        {
+            this.ime= ime;
+        }
+    }
+}
+
+**SVE OVO IZNAD IDE U JEDAN NAMESPACE**
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+**DRUGI NAMESPACE SA MAIN-om, NJEGA PODESITI DA SE POKRECE(Set as a StartUp Project)**
+**POTREBNO JE REFERENCIJRATI TAJ PROJEKAT TJ OMOGUCITI PRISTUP SERVISIMA **
+**(DESNI KLIK NA ConnecedService => AddS Service Reference)**
+
+
+Program.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ServiceReference2.Service1Client proxy = new ServiceReference2.Service1Client(); //BITNO! OVDE KREIRAMO 
+
+            while (true)
+            {
+	    Console.WriteLine("A)Dodaj Usera , ovde idu ostale opcije u zavisnosti od zadatka");
+            String opcija = Console.ReadLine();
+                if (opcija == "A")
+                {
+                    Console.WriteLine("Registruj Usera, unesi imerName");
+
+                    string userName= Console.ReadLine();
+
+                    proxy.registrujUsera(userName);  //poziv metode koja se nalazi u Service
+                   
+
+                }
+                
+            }
+        }
+    }
+}
+
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+----------b------i------t----n------o-------------------------
+--------------------config--------------------------------------
+-----------------------------------------------------------------
+
+<services>
+      <service name="WcfServiceLibrary2.Service1">  //OVDE IDE IME SERVISA 
+	<endpoint address="" binding="basicHttpBinding" contract="WcfServiceLibrary2.IService1"/> //CONTRACT=IME_SERVICE_INTERFACE-A
+      </service>
+</services>

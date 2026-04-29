@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfCisterna", "WcfCisterna\WcfCisterna.csproj", "{FE81247F-D8D5-4F68-A842-67EF1AE7C353}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCisternaClient", "CisternaClient\AppCisternaClient.csproj", "{A9C309E9-26A5-4872-9DD3-322CEE43172F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FE81247F-D8D5-4F68-A842-67EF1AE7C353} = {FE81247F-D8D5-4F68-A842-67EF1AE7C353}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE81247F-D8D5-4F68-A842-67EF1AE7C353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE81247F-D8D5-4F68-A842-67EF1AE7C353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE81247F-D8D5-4F68-A842-67EF1AE7C353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE81247F-D8D5-4F68-A842-67EF1AE7C353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9C309E9-26A5-4872-9DD3-322CEE43172F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9C309E9-26A5-4872-9DD3-322CEE43172F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9C309E9-26A5-4872-9DD3-322CEE43172F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9C309E9-26A5-4872-9DD3-322CEE43172F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A541EE5-9544-4521-ADFC-06EF72A1E14A}
+	EndGlobalSection
+EndGlobal

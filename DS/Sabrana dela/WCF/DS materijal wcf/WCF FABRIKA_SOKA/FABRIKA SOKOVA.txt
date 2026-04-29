@@ -1,0 +1,65 @@
+[ServiceContract]
+public interface ISokoviService
+{
+	[OperationContract]
+	void dodajSok(string naziv,double zapremina,double gustina);
+	
+	//i ovako za sve ostale operacije...
+
+
+[ServiceBehaviour(InstanceContextmode = InstanceContextMode.Single)]
+public class SokoviService : ISokoviService
+{
+	List<string> promene = new List<string>();
+	double trenutnaGustina;
+	dobule trenutnaZapremina;
+	double maxZapremina=300;
+	void dodajSastojak(string naziv,dobule zapremina,double gustina)
+	{
+		if(trenutnaZapremina+zapremina>maxZapremina)
+		{
+			promene.Add("Ne moze se dotadati" + zapremina + "za" + naziv +".");
+			return;
+		}
+		double trenutnaMasa = trenutnaGustina*trenutnaZapremina;
+		trenutnaMasa += gustina*zapremina;
+		trenutnaZapremina+=zapremina;
+		trenutnaGustina = treuntnaMasa/trenutnaZapremina;
+		promene.Add("Dodale su se promene za " + naziv + "...");
+	}
+	void flasirajZapreminu(dobule zapremina)
+	{
+		//samo ako trenutnaZapremina <zapremina
+		trenutnaZapremina-=zapremina;
+		promene.Add("...");	
+	}
+	void isprazni()
+	{
+		trenutnaZapremina=0;
+		promene.Add("...");
+	}
+	string prikaziStanje()
+	{
+		double masa = trenutnaZapremina*trenutnaGustina;
+		double nivo = 100*trenutnaZapremina/maxZapremina;
+		string stanje = "Masa:" + masa.toString() + " nivo: " + nivo.toString();
+		return stanje;
+	}
+	List<string> vratiPromene() return promene;
+}
+--------------------------------------------------------------------------------------------
+public class Client
+{
+	SokoviClient proxy = new SokoviClient();
+	//isprobati sve funkcionalnosti;
+}
+--------------------------------------------------------------------------------------------
+WEB CFG
+///////
+
+<services>
+	<service name = "Sokovi.sokoviService">
+	<endpoint contract = "Sokovi.ISokoviService"
+	 	  binding = "basicHttpBinding">
+	</service>
+</services>

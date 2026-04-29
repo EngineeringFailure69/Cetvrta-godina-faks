@@ -60,5 +60,7 @@ DS blanketi:
 
 Neka resenja zadataka iz distribuiranih sistema, nije nista specijalno.
 
+Sabrana dela - ovde se nalaze neka razna resenja za zadatke koja sam pokupio po internetu. Za neke zadatke iz wcf-a sam morao da obrisem neke fajlove jer su imena bila previse dugacka, pa nisam siguran da li svi projekti mogu da se pokrenu
+
 Interesantan repozitorijum: https://github.com/NemanjaMiloicic/DS
 

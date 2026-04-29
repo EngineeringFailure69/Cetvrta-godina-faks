@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5dc296e3-203c-45bc-a116-3a1b5b78348f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Lab_Z2_Banka/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c16eaccf-d49e-42bc-a157-b2b37a9dda1c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z2_Banka/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="3b1b6a53-f84f-432d-b6f2-0044893d6758" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z2_Banka/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="997e79b4-969d-44c7-9e64-e385bce22cb9" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z2_Banka/Service1/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="30fe1e8a-47f2-452f-8e1b-9d6b85d8a66e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z2_Banka/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

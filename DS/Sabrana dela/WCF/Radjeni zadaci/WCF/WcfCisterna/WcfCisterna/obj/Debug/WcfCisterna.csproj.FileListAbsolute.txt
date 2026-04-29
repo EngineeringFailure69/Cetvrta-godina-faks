@@ -1,0 +1,7 @@
+D:\Faks\III godina\DistribuiraniSistemi-master\Blanketi_Voja\WCF\WcfCisterna\WcfCisterna\bin\WcfCisterna.dll.config
+D:\Faks\III godina\DistribuiraniSistemi-master\Blanketi_Voja\WCF\WcfCisterna\WcfCisterna\bin\WcfCisterna.dll
+D:\Faks\III godina\DistribuiraniSistemi-master\Blanketi_Voja\WCF\WcfCisterna\WcfCisterna\bin\WcfCisterna.pdb
+D:\Faks\III godina\DistribuiraniSistemi-master\Blanketi_Voja\WCF\WcfCisterna\WcfCisterna\obj\Debug\WcfCisterna.csprojAssemblyReference.cache
+D:\Faks\III godina\DistribuiraniSistemi-master\Blanketi_Voja\WCF\WcfCisterna\WcfCisterna\obj\Debug\WcfCisterna.csproj.CoreCompileInputs.cache
+D:\Faks\III godina\DistribuiraniSistemi-master\Blanketi_Voja\WCF\WcfCisterna\WcfCisterna\obj\Debug\WcfCisterna.dll
+D:\Faks\III godina\DistribuiraniSistemi-master\Blanketi_Voja\WCF\WcfCisterna\WcfCisterna\obj\Debug\WcfCisterna.pdb

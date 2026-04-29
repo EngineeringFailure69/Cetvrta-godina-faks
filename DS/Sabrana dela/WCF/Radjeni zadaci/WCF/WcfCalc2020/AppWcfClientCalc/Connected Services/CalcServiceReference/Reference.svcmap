@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f87cb015-ae7c-42ff-96d1-ad0e90ce8094" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:53525/CalcService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CalcService.disco" MetadataType="Disco" ID="e553c268-2d84-45cd-b03d-005a7ceb4967" SourceId="1" SourceUrl="http://localhost:53525/CalcService.svc?disco" />
+    <MetadataFile FileName="CalcService.xsd" MetadataType="Schema" ID="cad15be5-a2bf-48b6-a1f7-5f750e6d884b" SourceId="1" SourceUrl="http://localhost:53525/CalcService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CalcService.wsdl" MetadataType="Wsdl" ID="41e4d34a-3537-466b-9853-9305e806ef27" SourceId="1" SourceUrl="http://localhost:53525/CalcService.svc?wsdl" />
+    <MetadataFile FileName="CalcService1.xsd" MetadataType="Schema" ID="3551e9bd-e07f-4e7d-98c8-7c2fdea51744" SourceId="1" SourceUrl="http://localhost:53525/CalcService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

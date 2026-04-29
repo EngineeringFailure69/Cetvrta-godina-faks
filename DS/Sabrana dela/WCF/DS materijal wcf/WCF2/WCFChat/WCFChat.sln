@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFChat", "WCFChat\WCFChat.csproj", "{A6C1A8A2-E7FF-483A-A0BF-13BA4965B862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Klijent", "Klijent\Klijent.csproj", "{17957676-4E5B-407A-8C0A-9DEDC0AACDAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A6C1A8A2-E7FF-483A-A0BF-13BA4965B862} = {A6C1A8A2-E7FF-483A-A0BF-13BA4965B862}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6C1A8A2-E7FF-483A-A0BF-13BA4965B862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C1A8A2-E7FF-483A-A0BF-13BA4965B862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C1A8A2-E7FF-483A-A0BF-13BA4965B862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C1A8A2-E7FF-483A-A0BF-13BA4965B862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17957676-4E5B-407A-8C0A-9DEDC0AACDAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17957676-4E5B-407A-8C0A-9DEDC0AACDAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17957676-4E5B-407A-8C0A-9DEDC0AACDAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17957676-4E5B-407A-8C0A-9DEDC0AACDAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

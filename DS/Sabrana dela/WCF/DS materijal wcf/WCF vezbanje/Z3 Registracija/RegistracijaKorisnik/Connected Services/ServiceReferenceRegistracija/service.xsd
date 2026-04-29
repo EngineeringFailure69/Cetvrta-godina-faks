@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Z3_Registracija" />
+  <xs:element name="DodajRegistraciju">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Z3_Registracija" minOccurs="0" name="vlasnik" nillable="true" type="q1:Vlasnik" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Z3_Registracija" minOccurs="0" name="vozilo" nillable="true" type="q2:Vozilo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DodajRegistracijuResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiVozilaVlasnika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Z3_Registracija" minOccurs="0" name="vlasnik" nillable="true" type="q3:Vlasnik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VratiVozilaVlasnikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Z3_Registracija" minOccurs="0" name="VratiVozilaVlasnikaResult" nillable="true" type="q4:ArrayOfVozilo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PosedujeModel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="model" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PosedujeModelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Z3_Registracija" minOccurs="0" name="PosedujeModelResult" nillable="true" type="q5:ArrayOfVlasnik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vratiVozila">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vratiVozilaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Z3_Registracija" minOccurs="0" name="vratiVozilaResult" nillable="true" type="q6:ArrayOfVozilo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

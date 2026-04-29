@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z1 Cisterna", "Z1 Cisterna\Z1 Cisterna.csproj", "{96964C67-5941-41CB-A55A-C476738EF031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CisternaKlijent", "CisternaKlijent\CisternaKlijent.csproj", "{6AEB1A2A-9575-47CB-972D-A95C97D3867A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{96964C67-5941-41CB-A55A-C476738EF031} = {96964C67-5941-41CB-A55A-C476738EF031}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96964C67-5941-41CB-A55A-C476738EF031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96964C67-5941-41CB-A55A-C476738EF031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96964C67-5941-41CB-A55A-C476738EF031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96964C67-5941-41CB-A55A-C476738EF031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AEB1A2A-9575-47CB-972D-A95C97D3867A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AEB1A2A-9575-47CB-972D-A95C97D3867A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AEB1A2A-9575-47CB-972D-A95C97D3867A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AEB1A2A-9575-47CB-972D-A95C97D3867A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FDF5304-1BB9-414E-805D-A5FE43037C41}
+	EndGlobalSection
+EndGlobal

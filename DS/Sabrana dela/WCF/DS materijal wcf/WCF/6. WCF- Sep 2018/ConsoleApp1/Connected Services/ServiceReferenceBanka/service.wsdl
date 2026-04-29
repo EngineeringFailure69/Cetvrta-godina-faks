@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Bank" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBank_uplati_InputMessage">
+    <wsdl:part name="parameters" element="tns:uplati" />
+  </wsdl:message>
+  <wsdl:message name="IBank_uplati_OutputMessage">
+    <wsdl:part name="parameters" element="tns:uplatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBank_isplatiDinare_InputMessage">
+    <wsdl:part name="parameters" element="tns:isplatiDinare" />
+  </wsdl:message>
+  <wsdl:message name="IBank_isplatiDinare_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isplatiDinareResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBank_namestiKoef_InputMessage">
+    <wsdl:part name="parameters" element="tns:namestiKoef" />
+  </wsdl:message>
+  <wsdl:message name="IBank_namestiKoef_OutputMessage">
+    <wsdl:part name="parameters" element="tns:namestiKoefResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBank_GetPromene_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromene" />
+  </wsdl:message>
+  <wsdl:message name="IBank_GetPromene_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromeneResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBank">
+    <wsdl:operation name="uplati">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBank/uplati" message="tns:IBank_uplati_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBank/uplatiResponse" message="tns:IBank_uplati_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="isplatiDinare">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBank/isplatiDinare" message="tns:IBank_isplatiDinare_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBank/isplatiDinareResponse" message="tns:IBank_isplatiDinare_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="namestiKoef">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBank/namestiKoef" message="tns:IBank_namestiKoef_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBank/namestiKoefResponse" message="tns:IBank_namestiKoef_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPromene">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBank/GetPromene" message="tns:IBank_GetPromene_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBank/GetPromeneResponse" message="tns:IBank_GetPromene_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IBank" type="tns:IBank">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="uplati">
+      <soap:operation soapAction="http://tempuri.org/IBank/uplati" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isplatiDinare">
+      <soap:operation soapAction="http://tempuri.org/IBank/isplatiDinare" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="namestiKoef">
+      <soap:operation soapAction="http://tempuri.org/IBank/namestiKoef" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPromene">
+      <soap:operation soapAction="http://tempuri.org/IBank/GetPromene" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Bank">
+    <wsdl:port name="BasicHttpBinding_IBank" binding="tns:BasicHttpBinding_IBank">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/_6.WCF__Sep_2018/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

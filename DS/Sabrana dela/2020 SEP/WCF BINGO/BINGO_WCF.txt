@@ -1,0 +1,70 @@
+public interface IBINGO
+{
+	void posaljiKombinaciju(Kombinacija k);
+	void obrisiKombinaciju(Kombinacija k);
+}
+
+
+
+
+
+public class Kombinacija
+{
+	List<int> komb1;
+	List<int> komb2;
+	List<int> komb3;
+	
+	int brojac1=0;
+	int brojac2=0;
+	int brojac3=0;
+
+	public List<int> Komb1
+	{
+		get { return komb1; }
+		set { komb1 = value; }
+	}
+	public List<int> Komb2
+	{
+		get { return komb2; }
+		set { komb2 = value; }
+	}
+	public List<int> Komb3
+	{
+		get { return komb3; }
+		set { komb3 = value; }
+	}
+
+	public int Brojac1
+	//....
+}
+
+
+
+
+
+public interface IBingoCallback
+{
+	void posaljiBrojKlientu(int broj);
+	void posaljiUkupanBrojIzvucenihBrojva(int ukupanBroj);
+	void posaljiBINGO();
+	void posaljiRedove(int brojRedova);
+	void posaljiCestitku();
+}
+
+public class BingoCallback : IBingoCallback
+{
+	void posaljiBrojKlient(int broj)
+	{
+		Console.Write(broj);
+	}
+
+	void posaljiRedove(int brojRedova)
+	{
+		Console.Write(brojRedova);
+	} 
+	//.....
+}
+
+
+
+

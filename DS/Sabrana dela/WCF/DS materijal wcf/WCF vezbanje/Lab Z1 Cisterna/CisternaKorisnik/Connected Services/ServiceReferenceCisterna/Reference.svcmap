@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="417ec590-9e62-4a46-8817-206798d99c92" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Lab_Z1_Cisterna/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="4349fc91-10ac-4c25-8eae-1243df8c422f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z1_Cisterna/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="420b46de-e429-4d0e-a405-22aa04647ac7" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z1_Cisterna/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="f00ac371-5292-4363-ba08-929d502e8ce5" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z1_Cisterna/Service1/mex" />
+    <MetadataFile FileName="Lab_Z1_Cisterna.xsd" MetadataType="Schema" ID="f2b176b9-bd9c-42e2-b2fd-599d474b5830" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z1_Cisterna/Service1/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="49045111-f099-4822-b78c-9e88dd20e90c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Lab_Z1_Cisterna/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
