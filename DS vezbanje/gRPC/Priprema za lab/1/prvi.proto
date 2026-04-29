@@ -1,0 +1,36 @@
+﻿syntax = "proto3";
+package jun24;
+
+service ListaKorisnika
+{
+	rpc DodajKorisnika (Korisnik) returns (OdgovorServera);
+	rpc ObrisiKorisnika (KorisnikID) returns (OdgovorServera);
+	rpc IzmeniKorisnika (Korisnik) returns (OdgovorServera);
+	rpc DobaviListuKorisnika (OpsegKorisnika) returns (stream Korisnik);
+	rpc ObrisiListuKorisnika (stream KorisnikID) returns (stream OdgovorServera);
+}
+
+message Korisnik
+{
+	int32 id  = 1; 
+	string ime = 2;
+	string prezime = 3;
+	repeated string brojeviTelefona = 4;
+	optional string adresa = 5;
+}
+
+message KorisnikID
+{
+	int32 id = 1;
+}
+
+message OdgovorServera
+{
+	string odgovor = 1;
+}
+
+message OpsegKorisnika
+{
+	int32 pocetniId = 1;
+	int32 krajnjiId = 2;
+}

@@ -1,0 +1,18 @@
+﻿syntax = "proto3";
+package Okt2;
+
+service okt25
+{
+	rpc kvadratBroja (stream AiB) returns (stream odgovorServera);
+}
+
+message AiB
+{
+	int32 a = 1;
+	int32 b = 2;
+}
+
+message odgovorServera
+{
+	string odgovor = 1;
+}

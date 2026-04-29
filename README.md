@@ -40,3 +40,13 @@ Januar 2024 zadatak 1 - resen bez poslednje Save funkcije
 
 OpenGL resenja nisu moja, ali stavio sam ih tu, cisto eto, onako, nek ima
 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Vestacka blanketi:
+
+
+
+Ovde su resenja za zadatke 4-7, i jos po neki random zadaci sa drugih blanketa koje sam resavao, blanketi su sa sicef-a. Logiku predikata nisam znao kako da resim, ID3 ima resenje za jedan blanket, i u principu je svuda isto, mene je samo mrzelo da radim opet zadatke jer ima bas puno da se pise
+

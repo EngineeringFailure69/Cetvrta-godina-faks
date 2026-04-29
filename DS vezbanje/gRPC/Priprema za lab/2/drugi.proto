@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+package drugi;
+import "google/protobuf/empty.proto";
+
+service CelobrojniPodatakServis
+{
+	rpc SrVrednostPrirodnihBrojeva (Broj) returns (google.protobuf.Empty);
+	rpc PomnoziSvakiTreciElement(stream Broj) returns (stream Broj);
+}
+
+message Broj
+{
+	int32 vrednost = 1;
+}

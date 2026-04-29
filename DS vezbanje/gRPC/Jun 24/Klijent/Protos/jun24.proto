@@ -1,0 +1,27 @@
+﻿syntax = "proto3";
+package jun24;
+
+service UpravljanjePorukama
+{
+	rpc SendMessage (Poruka) returns (ServerVraca);
+	rpc DeleteMessage (PorukaID) returns (ServerVraca);
+	rpc ListMessages (PraznaPoruka) returns (stream Poruka);
+}
+
+message Poruka
+{
+	int32 Id = 1;
+	string tekst = 2;
+}
+
+message PorukaID
+{
+	int32 Id = 1;
+}
+
+message ServerVraca
+{
+	string tekstVracen = 1;
+}
+
+message PraznaPoruka{}

@@ -1,0 +1,26 @@
+﻿syntax = "proto3";
+package jun24;
+import "google/protobuf/empty.proto";
+
+service UpravljanjePorukama
+{
+	rpc SendMessage (Poruka) returns (OdgovorServera);
+	rpc DeleteMessage (PorukaID) returns (OdgovorServera);
+	rpc ListMessages (google.protobuf.Empty) returns (stream Poruka);
+}
+
+message Poruka
+{
+	int32 Id = 1;
+	string tekst = 2;
+}
+
+message OdgovorServera
+{
+	string odgovor = 1;
+}
+
+message PorukaID
+{
+	int32 Id = 1;
+}

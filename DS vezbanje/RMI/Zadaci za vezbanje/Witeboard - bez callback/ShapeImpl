@@ -1,0 +1,29 @@
+import java.rmi.*;
+import java.awt.*;
+import java.io.*;
+
+public class ShapeImpl implements Shape
+{
+	public String tip;
+	public Color bojaLinije;
+	public Color bojaIspune;
+	public boolean indikatorIspunjenosti;
+	public Rectangle oblik;
+	
+	public Shape(String tip, Color bojaLinije, Color bojaIspune, boolean indikatorIspunjenosti, Rectangle oblik)
+	{
+		this.tip = tip;
+		this.bojaLinije = bojaLinije;
+		this.bojaIspune = bojaIspune;
+		this.indikatorIspunjenosti = indikatorIspunjenosti;
+		this.oblik = oblik;
+	}
+	
+	public void predstaviUTekstualnomFormatu()
+	{
+		System.out.println("Tip: " + tip + "\n" + "Boja linije: " + bojaLinije + "\n");
+		System.out.println("Oblik: \n" + "x: " + oblik.x + "\n" + "y: " + oblik.y + "\n" + "Width: " + oblik.width + "\n" + "Height: " + oblik.height);
+		if(indikatorIspunjenosti)  System.out.println("Popunjen: da\n" + "Boja ispune: "  + bojaIspune);
+		else System.out.println("Popunjen: ne");
+	}
+}
